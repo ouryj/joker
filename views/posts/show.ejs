@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+
+<div class="container">
+        <div class="form">
+                <h4><%=post.title%></h4>
+                <p><%=post.content%></p>
+                <em>by:<%=post.author.username%></em>
+                <p><i><%=post.created%></i></p>
+                <div class="comment">
+                   <a class="btn-submit" href="/post/<%=post._id%>/comments/new">Comment</a> <br>
+                   <ul>
+                   <% post.comments.forEach((comment)=>{ %>
+                     <li>  <em> <a href="/user/<%=comment.author.id%>"><%=comment.author.username%> </a></em> <%= comment.text %>
+                       <%if(currentUser && currentUser._id.equals(comment.author.id)){ %>
+                        
+                       <a href="/post/<%=post._id%>/comments/<%=comment._id%>/edit" class="btn-edit">edit</a>
+                       <form action="/post/<%=post._id%>/comments/<%=comment._id%>?_method=delete" method="post">
+                        <button class="btn-danger" type="submit">delete comment</button>
+                       </form>
+               
+                </li>
+                       <%}%>
+                </ul>
+                
+               <% }) %>
+        </div>
+               
+            </div>
+</div>
+<% include ../partials/footer %>

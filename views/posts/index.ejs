@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+<header class="container">
+        <h1>welcome to Jokers where laugh improve your health</h1>
+         <a id="crack" href="/post/new">crack a joke</a>
+</header>
+<div class="container">
+   
+    <% posts.forEach((post)=>{ %>
+        <div class="item">
+        
+       <p><strong>Title:  <%= post.title %></strong></p>
+        <p><%=post.content%></p>
+        <em>posted by: <strong> <a href="/user/<%=post.author.id%>">  <%=post.author.username%> </a> </strong></em>
+        <div class="links">
+        <a class="btn-info" href="/post/<%=post._id%>">More-Info</a>
+        <% if(currentUser && currentUser._id.equals(post.author.id)) {%>
+        <a class="btn-edit" href="/post/<%=post._id%>/edit">edit</a>
+        <form   action="/post/<%=post._id%>?_method=delete" method="post">
+             <input class="btn-danger" type="submit" value="delete">
+       </form>
+       <%}%>
+    </div>
+    </div>
+
+   <% }) %>
+   
+</div>
+

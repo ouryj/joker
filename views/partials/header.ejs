@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Joker</title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+<body>
+    <nav>
+        <a id="home" href="/post">Home</a>
+        <% if(!currentUser) { %>
+        <a class="right-nav" href="/register">sign up</a>
+        <a class="right-nav" href="/login">login</a>
+        <% } else {%>
+        <a class="right-nav" href="/logout">logout</a>
+        <a class="right-nav" href="/user/<%=currentUser._id%>">login as <%=currentUser.username%></a>
+        <% }%>
+       
+    </nav>
+    <div class="container">
+        
+            <% if(error && error.length > 0) { %>
+                <div class="error-alert">
+                <%= error %>
+            </div>
+                <%} else { %>
+                    <%if(success && success.length > 0) { %>
+                        <div class="success-alert">
+                            <%= success %>
+                        </div>
+                    <%}%>
+                <% } %>
+       
+    </div>
+    

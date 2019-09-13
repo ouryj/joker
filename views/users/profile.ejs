@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+<div class="container">
+<div class="form">
+    <img src="<%=user.image%>" style="height: 100px; width:100px" alt="">
+    <div>
+        <h5><%=user.name %></h5>
+        <p> <%=user.username %></p>
+        <em>Age: <%=user.age.toDateString()%></em>
+        
+    </div>
+</div>
+</div>
+<% include ../partials/footer %>
